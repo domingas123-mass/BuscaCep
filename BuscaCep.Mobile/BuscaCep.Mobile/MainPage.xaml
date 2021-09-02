@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModel="clr-namespace:BuscaCep.Mobile.View_Model"
+             x:Class="BuscaCep.Mobile.MainPage">
+    <ContentPage.BindingContext>
+        <viewModel:BuscaCepViewModel></viewModel:BuscaCepViewModel>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Label></Label>
+        <Label></Label>
+        <Frame BackgroundColor="Blue" Padding="24" CornerRadius="0">
+            <Label Text="Busca seus dados" HorizontalTextAlignment="Center" TextColor="Red" FontSize="36"/>
+        </Frame>
+        <Entry x:Name="txtCep" Text="{Binding Cep}"></Entry>
+        <Button Command="{Binding BuscarComando}" Text="Buscar"></Button>
+        <Label Text="Logradouro"></Label>
+        <Label  x:Name ="txtLogradouro" Text="{Binding Lograd}" ></Label>
+        <Label Text="complemento"></Label>
+        <Label x:Name ="txtcomplemento" Text="{Binding Complem}"></Label>
+        <Label Text="bairro"></Label>
+        <Label x:Name ="txtbairro" Text="{Binding Bairro}"></Label>
+        <Label Text="Localidade"></Label>
+         <Label x:Name ="txtLocalidade" Text="{Binding Locali}"></Label>
+        <Label Text=" UF"></Label>
+        <Label x:Name ="txtUF" Text="{Binding Uf}"></Label>
+    </StackLayout>
+
+</ContentPage>

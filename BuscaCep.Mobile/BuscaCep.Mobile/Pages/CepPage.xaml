@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:viewModel="clr-namespace:BuscaCep.Mobile.View_Model"
+             x:Class="BuscaCep.Mobile.Pages.CepPage">
+    <ContentPage.BindingContext>
+        <viewModel:CepsViewModel></viewModel:CepsViewModel>
+    </ContentPage.BindingContext>
+
+    <Grid Padding="5,0" RowSpacing="5" ColumnSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label></Label>
+        <Label></Label>
+        <Frame BackgroundColor="Blue" Padding="24" CornerRadius="0" Grid.Row="0">
+            <Label Text="Busca seus dados" HorizontalTextAlignment="Center" TextColor="Red" FontSize="36"/>
+        </Frame>
+        <Entry Grid.Row="1" Text="{Binding Cep}" Keyboard="Numeric" Placeholder="Digite seu Cep"></Entry>
+        
+        <ActivityIndicator IsRunning="{Binding IsVsy}" IsVisible="{Binding IsVsy}"></ActivityIndicator>
+        
+        <Button Grid.Row="2" Command="{Binding BuscarComando}" Text="Buscar" IsEnabled="{Binding isNotBusy}"></Button>
+
+
+        <ListView x:Name="MyListView"
+                  Grid.Row="3"
+            ItemsSource="{Binding Ceps}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement">
+            <!--Built in Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding cep}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+        </ListView>
+
+    </Grid>
+   
+</ContentPage>
